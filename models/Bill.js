@@ -9,20 +9,20 @@ module.exports = (sequelize, DataTypes) => {
       },
       start_date: {
         allowNull: false,
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
       },
       end_date: {
         allowNull: false,
-        type: DataTypes.DATEONLY,
-      },
-      amout: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.DATE,
       },
       total: {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
+      status:{
+        allowNull: false,
+        type: DataTypes.STRING,
+      }
     },
 
     {

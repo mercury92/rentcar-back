@@ -4,8 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       car_number: {
         primaryKey: true,
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+        type: DataTypes.STRING,
       },
       car_name: {
         type: DataTypes.STRING,
@@ -15,11 +14,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      price:{
+        type: DataTypes.INTEGER,
+        allowNull:false
+      },
       available: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
       },
+      picture:{
+        type:DataTypes.STRING,
+      }
     },
 
     {

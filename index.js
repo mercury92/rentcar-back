@@ -16,6 +16,7 @@ let allowdOrgins = ["http://localhost:3000"];
 const userRoutes = require("./routes/user");
 const bookingRoutes = require("./routes/booking");
 const reserveRoutes = require("./routes/reservation");
+const profileRoutes = require("./routes/profile")
 
 app.use(
   cors({
@@ -33,8 +34,9 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/user",auth,userRoutes);
-app.use("/booking",auth, bookingRoutes);
+app.use("/user",userRoutes);
+app.use("/profile",auth,profileRoutes)
+app.use("/booking", bookingRoutes);
 app.use("/reservation",auth, reserveRoutes);
 
 

@@ -19,6 +19,7 @@ const register = async (req, res) => {
       lastname,
       email,
       password: hashedPW,
+      address
     });
   }
 
@@ -48,36 +49,10 @@ const login = async (req, res) => {
     }
   }
 
-  res.status(201).send({ message: "login success" });
 };
 
-const getmybill = async (req, res) => {
-  const myId = req.user.user_id;
-  const myBillList = await db.Bill.findAll({
-    where: { user_id: myId },
-    order: [["start_date", "DESC"]],
-    attributes: [
-      "bill_no",
-      "user_id",
-      "car_number",
-      "start_date",
-      "end_date",
-      "amout",
-      "total",
-      "createdAt",
-      "updatedAt",
-    ],
-  });
-
-  if (myBillList) {
-    res.status(200).send({ myBillList });
-  } else {
-    res.status(404).send({ message: "หาไม่เจอหรอก" });
-  }
-};  
 
 module.exports = {
   register,
-  login,
-  getmybill,
+  login
 };
