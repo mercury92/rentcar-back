@@ -13,25 +13,29 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       password: {
-        allowNull: false,
         type: DataTypes.STRING,
+        allowNull: false,
       },
       name: {
-        allowNull: false,
         type: DataTypes.STRING,
+        allowNull: false,
       },
-      lastname:{
-        allowNull: false,
+      lastname: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
-      email: {
+      phone: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        type: DataTypes.STRING,
+      },
+      address:{
+        type:DataTypes.STRING,
+        allowNull:false,
       },
       isAdmin: {
-        allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue: false
+        allowNull: false,
+        defaultValue: false,
       },
     },
 
@@ -39,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "user",
     }
   );
+
   User.associate = (models) => {
     User.hasMany(models.Bill, { foreignKey: "user_id" });
   };

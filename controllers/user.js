@@ -3,8 +3,8 @@ const bc = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-  console.log(req.body);
-  const { username, password, name, lastname, email, address } = req.body;
+  const { username, password, name, lastname, phone, address } = req.body;
+
   const targetUser = await db.User.findOne({ where: { username } });
 
   if (targetUser) {
@@ -17,9 +17,9 @@ const register = async (req, res) => {
       username,
       name,
       lastname,
-      email,
+      phone,
+      address,
       password: hashedPW,
-      address
     });
   }
 
@@ -28,6 +28,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { username, password } = req.body;
+  
   const targetUser = await db.User.findOne({ where: { username } });
 
   if (!targetUser) {
@@ -48,11 +49,9 @@ const login = async (req, res) => {
       res.status(400).send({ message: "Username or Password is wrong" });
     }
   }
-
 };
-
 
 module.exports = {
   register,
-  login
+  login,
 };

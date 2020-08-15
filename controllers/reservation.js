@@ -1,13 +1,13 @@
 const db = require("../models");
 
 const reserve = async (req, res) => {
-  const {car_number} = req.body;
+  const {car_id} = req.body;
 
   const changeAvailable = await db.Car.findOne({
-    where: {car_number:car_number},
+    where: {car_id:car_id},
   });
   const changePending = await db.Bill.findOne({
-    where: {car_number:car_number},
+    where: {car_id:car_id},
   })
   if (changeAvailable && changePending) {
     await changeAvailable.update({ available:false});

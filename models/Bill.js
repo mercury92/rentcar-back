@@ -8,21 +8,25 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
       },
       start_date: {
-        allowNull: false,
         type: DataTypes.DATE,
+        allowNull: false,
       },
       end_date: {
-        allowNull: false,
         type: DataTypes.DATE,
+        allowNull: false,
+      },
+      amout: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       total: {
-        allowNull: false,
         type: DataTypes.INTEGER,
-      },
-      status:{
         allowNull: false,
+      },
+      status: {
         type: DataTypes.STRING,
-      }
+        allowNull: false,
+      },
     },
 
     {
@@ -32,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Bill.associate = (models) => {
     Bill.belongsTo(models.User, { foreignKey: "user_id" });
-    Bill.belongsTo(models.Car, { foreignKey: "car_number" });
+    Bill.belongsTo(models.Car, { foreignKey: "car_id" });
   };
 
-  return  Bill;
+  return Bill;
 };

@@ -8,9 +8,9 @@ const auth = passport.authenticate("jwt",{session:false});
 const controllers = require("../controllers/booking")
 
 
-router.get("/:start_date/:end_date",controllers.getAll)
-router.post("/",auth,controllers.booking)
+router.get("/:start_date/:end_date",controllers.getCar)
+router.post("/",auth,controllers.createBooking)
 router.patch("/",auth,controllers.editbooking)
-router.delete("/:bill",auth,controllers.canclebook)
+router.delete("/:bill",auth,controllers.deleteBooking)
 
 module.exports = router;

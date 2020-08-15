@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const Car = sequelize.define(
     "Car",
     {
-      car_number: {
+      car_id: {
         primaryKey: true,
         type: DataTypes.STRING,
       },
@@ -14,18 +14,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      price:{
+      price: {
         type: DataTypes.INTEGER,
-        allowNull:false
+        allowNull: false,
       },
       available: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: true
       },
-      picture:{
-        type:DataTypes.STRING,
-      }
+      picture: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
 
     {
@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Car.associate = (models) => {
-    Car.hasMany(models.Bill, { foreignKey: "car_number" });
+    Car.hasMany(models.Bill, { foreignKey: "car_id" });
   };
 
   return Car;
